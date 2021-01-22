@@ -1,0 +1,2 @@
+model_checkpoint_path: "mineral_shards"
+all_model_checkpoint_paths: "mineral_shards"

@@ -64,8 +64,7 @@ def main():
 
     # This needs to be the saved model for deepq_x
     # You can change the scope to deepq_y for agent y
-    act = deepq_mineral_shards.load(
-      "mineral_shards.pkl", act_params=act_params)
+    act = deepq_mineral_shards.load("C:\\Users\\bob\\Documents\\code\\pysc2-examples\\models\\deepq\\mineral_y_9.1.pkl", act_params=act_params)
 
     while True:
 
