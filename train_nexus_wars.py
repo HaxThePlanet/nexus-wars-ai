@@ -24,6 +24,10 @@ point_flag.DEFINE_point("screen_size", "84", "Resolution for screen actions.")
 point_flag.DEFINE_point("minimap_size", "64", "Resolution for minimap actions.")
 flags.DEFINE_bool("hide_specific", False, "Hide the specific actions")
 
+from pysc2.agents import random_agent
+from pysc2.env import run_loop
+from pysc2.env import sc2_env
+from pysc2.tests import utils
 
 _MOVE_SCREEN = actions.FUNCTIONS.Move_screen.id
 #_SELECT_ARMY = actions.FUNCTIONS.select_army.id
@@ -55,6 +59,8 @@ last_filename = ""
 
 def main():
   FLAGS(sys.argv)
+
+  steps = 0 #Test steps
 
   print("algorithm : %s" % FLAGS.algorithm)
   print("timesteps : %s" % FLAGS.timesteps)
@@ -132,6 +138,10 @@ def main():
           gamma=0.99,
           prioritized_replay=True,
           callback=deepq_callback)
+
+      agent = random_agent.RandomAgent()
+      run_loop.run_loop([agent], env, steps)
+
       acts[0].save("mineral_shards_x.pkl")
       acts[1].save("mineral_shards_y.pkl")
 
